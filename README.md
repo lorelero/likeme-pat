@@ -28,7 +28,7 @@ Conexion con pg con la base de datos ./database/consultas.js
 ```js
 const pool = new Pool({
   host: "localhost",
-  user: "postgres",
+  user: "lore",
   password: "123456",
   database: "likeme",
   port: 5432,
