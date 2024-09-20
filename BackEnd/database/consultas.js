@@ -36,4 +36,33 @@ const agregarPost = async (post) => {
   return result.rows[0];
 };
 
-export { verPosts, agregarPost };
+const modificarPost = async (likes, id) => {
+
+  // Si lo hiciera solo con el id seria asi:
+  // cont consulta = 'UPDATE post SET likes = likes + 1 WHERE id = $1';
+  // const values =[id];
+
+  const consulta = 'UPDATE posts SET likes = $1 WHERE id = $2';
+  const values = [likes, id];
+  const result = await pool.query(consulta, values);
+
+  if (result.rowCount === 0) {
+    throw { code: "404" };
+  }
+  
+  return {id, likes};
+};
+
+const eliminarPost = async (id) => {
+  const consulta = "DELETE FROM posts WHERE id = $1";
+  const values = [id];
+  const result = await pool.query(consulta, values);
+
+  if (result.rowCount === 0) {
+    throw { code: "404" };
+  }
+
+  return id;
+};
+
+export { verPosts, agregarPost, modificarPost, eliminarPost };

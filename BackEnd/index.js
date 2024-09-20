@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { handleErrors } from './database/errors.js';
-import { verPosts, agregarPost, modificarPost, eliminarPost } from './database/consultas.js';
+import { agregarPost, verPosts } from './database/consultas.js';
 
 const app = express();
 dotenv.config();
@@ -12,7 +12,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log('servidor listo en http://localhost:' + PORT);
+  console.log("servidor listo en http://localhost:" + PORT);
 });
 
 // GET

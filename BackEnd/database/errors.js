@@ -5,6 +5,11 @@ export const handleErrors = (code) => {
           status: 400,
           message: "Formato no válido en el parámetro",
         };
+        case "23502":
+        return {
+          status: 400,
+          message: "Falta informacion en el Query String/Campo de Tabla",
+        };
       case "400":
         return {
           status: 400,
